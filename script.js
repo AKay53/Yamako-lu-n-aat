@@ -1,38 +1,39 @@
-// 1. Proje Listesi (Veri Tabanımız)
 const projeler = [
     {
         baslik: "Yamakoğlu Sahil Villaları",
         aciklama: "Denize sıfır, akıllı ev sistemli lüks konutlar.",
-        resim: "resimler/IMG_7877.JPG"
+        resim: "resimler/IMG_7877.JPG",
+        link: "sahil-villalari.html" // Yeni sayfanın adı
     },
     {
         baslik: "Yamakoğlu Apartman",
         aciklama: "Şehrin kalbinde, modern ve güvenli yaşam alanı.",
-        resim: "resimler/IMG_7876.JPG"
+        resim: "resimler/IMG_7876.JPG",
+        link: "apartman-projesi.html"
     },
     {
         baslik: "Modern Villa",
         aciklama: "Avrupa standartlarında estetik dokunuşlar.",
-        resim: "resimler/IMG_7875.JPG"
+        resim: "resimler/IMG_7875.JPG",
+        link: "modern-villa.html"
     }
 ];
 
-// 2. Projeleri Ekrana Basan Fonksiyon
 function projeleriYukle() {
     const grid = document.querySelector('.proje-grid');
-    
-    // Grid boşsa hata vermemesi için kontrol
     if (!grid) return;
 
     projeler.forEach(proje => {
         grid.innerHTML += `
-            <div class="proje-kart" onclick="detayAc('${proje.baslik}', '${proje.aciklama}')">
-                <img src="${proje.resim}" alt="${proje.baslik}">
-                <div class="proje-bilgi">
-                    <h3>${proje.baslik}</h3>
-                    <p>${proje.aciklama}</p>
+            <a href="${proje.link}" class="proje-kart-link">
+                <div class="proje-kart">
+                    <img src="${proje.resim}" alt="${proje.baslik}">
+                    <div class="proje-bilgi">
+                        <h3>${proje.baslik}</h3>
+                        <p>Detayları Gör →</p>
+                    </div>
                 </div>
-            </div>
+            </a>
         `;
     });
 }
