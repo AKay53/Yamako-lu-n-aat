@@ -1,55 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-    <title>YAMAKOĞLU İNŞAAT</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAMAKOĞLU İNŞAAT | Mükemmellik Sanatı</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>İnşaat Sektöründe Yeni Bir Dönem!</h1>
-    <h2>Hizmetlerimiz; </h2>
-        <div class="hizmetler-container">
-            <div class="hizmet-kart"><h3>Konut Projeleri</h3><p>Modern ve güvenli yapılar.</p></div>
-            <div class="hizmet-kart"><h3>Restorasyon</h3><p>Tarihi dokuya sadık yenileme.</p></div>
-            <div class="hizmet-kart"><h3>İç Mimari</h3><p>Estetik ve fonksiyonel alanlar.</p></div>
-            </div>  
-            <h2 style="text-align:center; margin-top:50px;">Projelerimiz</h2>
 
-            <div class="proje-grid">
-                
+    <header>
+        <div class="header-konteyner">
+            <div class="logo">
+                <img src="logo.png" alt="Yamakoğlu İnşaat Logo">
             </div>
-            
-            <div id="pencereKapsayici" class="modal-arkaplan">
-                <div class="modal-kutu">
-                    <span class="kapatma-isareti" onclick="detayKapat()">&times;</span>
-                    <h2 id="pencereBaslik">Proje Başlığı</h2>
-                    <p id="pencereAciklama">Burada detaylar yazacak...</p>
-                </div>
-            </div> 
-   
-    <p>YAMAKOĞLU İNŞAAT</p>
-    <section class="teklif-formu">
+            <nav>
+                <ul>
+                    <li><a href="#">Ana Sayfa</a></li>
+                    <li><a href="#projeler">Projelerimiz</a></li>
+                    <li><a href="#teklif">Teklif Al</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-icerik">
+            <h1>Geleceği İnşa Ediyoruz</h1>
+            <p>Yamaoğlu İnşaat ile modern, güvenli ve estetik yaşam alanları.</p>
+            <a href="#projeler" class="buton-gold">Projeleri İncele</a>
+        </div>
+    </section>
+
+    <section class="hizmetler-bolumu">
+        <h2>Hizmetlerimiz</h2>
+        <div class="hizmetler-container">
+            <div class="hizmet-kart">
+                <h3>Konut Projeleri</h3>
+                <p>Modern ve güvenli yapılar.</p>
+            </div>
+            <div class="hizmet-kart">
+                <h3>Restorasyon</h3>
+                <p>Tarihi dokuya sadık yenileme.</p>
+            </div>
+            <div class="hizmet-kart">
+                <h3>İç Mimari</h3>
+                <p>Estetik ve fonksiyonel alanlar.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projeler">
+        <h2 style="text-align:center; margin-bottom:30px;">Projelerimiz</h2>
+        <div class="proje-grid">
+            </div>
+    </section>
+
+    <section id="teklif" class="teklif-formu">
         <h2>Ücretsiz Teklif Alın</h2>
         <p>Projenizle ilgili detayları bırakın, size geri dönelim.</p>
-        
         <form>
             <div class="form-grubu">
                 <label for="ad">Ad Soyad:</label>
                 <input type="text" id="ad" name="ad" placeholder="Adınızı yazınız...">
             </div>
-    
             <div class="form-grubu">
                 <label for="email">E-posta Adresiniz:</label>
                 <input type="email" id="email" name="email" placeholder="ornek@mail.com">
             </div>
-    
             <div class="form-grubu">
                 <label for="mesaj">Mesajınız / Proje Detayları:</label>
                 <textarea id="mesaj" name="mesaj" rows="5" placeholder="Nasıl bir yapı hayal ediyorsunuz?"></textarea>
             </div>
-    
             <button type="submit" class="gonder-btn">Teklifi Gönder</button>
         </form>
     </section>
+
+    <div id="pencereKapsayici" class="modal-arkaplan">
+        <div class="modal-kutu">
+            <span class="kapatma-isareti" onclick="detayKapat()">&times;</span>
+            <h2 id="pencereBaslik">Proje Başlığı</h2>
+            <p id="pencereAciklama">Burada detaylar yazacak...</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 YAMAKOĞLU İNŞAAT - Tüm Hakları Saklıdır.</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

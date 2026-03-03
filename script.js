@@ -1,61 +1,69 @@
-// C++'taki Class mantığıyla aynı: Bir proje listesi oluşturuyoruz
-const projelerim = [
+// 1. Proje Listesi (Veri Tabanımız)
+const projeler = [
     {
-        baslik: "Yamaoğlu Sahil Villaları",
+        baslik: "Yamakoğlu Sahil Villaları",
         aciklama: "Denize sıfır, akıllı ev sistemli lüks konutlar.",
-        resim: "proje1.jpg"
+        resim: "resimler/IMG_7877.JPG"
     },
     {
-        baslik: "Yamaoğlu Sky Plaza",
-        aciklama: "Şehrin kalbinde, 40 katlı modern iş merkezi.",
-        resim: "proje2.jpg"
+        baslik: "Yamakoğlu Apartman",
+        aciklama: "Şehrin kalbinde, modern ve güvenli yaşam alanı.",
+        resim: "resimler/IMG_7876.JPG"
     },
     {
-        baslik: "Lojistik Merkezi",
-        aciklama: "Avrupa standartlarında dev depolama alanı.",
-        resim: "proje3.jpg"
+        baslik: "Modern Villa",
+        aciklama: "Avrupa standartlarında estetik dokunuşlar.",
+        resim: "resimler/IMG_7875.JPG"
     }
 ];
+
+// 2. Projeleri Ekrana Basan Fonksiyon
 function projeleriYukle() {
     const grid = document.querySelector('.proje-grid');
-    grid.innerHTML = ""; // İçini bir temizleyelim
+    
+    // Grid boşsa hata vermemesi için kontrol
+    if (!grid) return;
 
-    projelerim.forEach(proje => {
-        // Her proje için bir kart oluşturuyoruz (Template Literals kullanarak)
-        const kartHTML = `
+    projeler.forEach(proje => {
+        grid.innerHTML += `
             <div class="proje-kart" onclick="detayAc('${proje.baslik}', '${proje.aciklama}')">
                 <img src="${proje.resim}" alt="${proje.baslik}">
                 <div class="proje-bilgi">
                     <h3>${proje.baslik}</h3>
-                    <p>Detayları görmek için tıkla</p>
+                    <p>${proje.aciklama}</p>
                 </div>
             </div>
         `;
-        grid.innerHTML += kartHTML; // HTML'in sonuna ekle
     });
 }
 
-// Sayfa yüklendiğinde bu motoru çalıştır
+// Sayfa tamamen yüklendiğinde projeleri çalıştır
 window.onload = projeleriYukle;
 
-
-// Fonksiyon: Detay Penceresini Açar
+// 3. Detay Penceresi (Modal) Fonksiyonları
 function detayAc(baslik, aciklama) {
-    // HTML'deki elemanları yakalıyoruz
     const modal = document.getElementById('pencereKapsayici');
     const modalBaslik = document.getElementById('pencereBaslik');
     const modalAciklama = document.getElementById('pencereAciklama');
 
-    // Pencerenin içindeki yazıları, tıkladığımız karta göre değiştiriyoruz
-    modalBaslik.innerText = baslik;
-    modalAciklama.innerText = aciklama;
-
-    // Pencereyi görünür yapıyoruz
-    modal.style.display = "block";
+    if (modal && modalBaslik && modalAciklama) {
+        modalBaslik.innerText = baslik;
+        modalAciklama.innerText = aciklama;
+        modal.style.display = "block";
+    }
 }
 
-// Fonksiyon: Detay Penceresini Kapatır
 function detayKapat() {
     const modal = document.getElementById('pencereKapsayici');
-    modal.style.display = "none";
+    if (modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Modal dışına tıklandığında kapatma özelliği (Ekstra Konfor)
+window.onclick = function(event) {
+    const modal = document.getElementById('pencereKapsayici');
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }

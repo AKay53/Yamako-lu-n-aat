@@ -1,83 +1,189 @@
+/* 1. RESET VE TEMEL AYARLAR */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
-background-color:rgb(106, 106, 109);
-font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-line-height:normal;
-margin: 40px;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
 }
-h1 {
-    color :black;
-    border-bottom: 2px orange;
-    text-align: center;
-    padding-bottom: 10px;
-    
+
+/* 2. HEADER (MENÜ) - SABİT */
+header {
+    background-color: white;
+    padding: 10px 50px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
-li{
-    color:darkgreen;
-    font-weight: bold;
-}
-ul{
-    background-color: rgb(138, 142, 145);
-    border: 1px solid snow;
-    padding: 20px;
-    margin: 30px;
-    border-left: 5px solid orange;
-    list-style-type: none;
-    border-radius: 8px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 1);
-}
-li{
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-}
-li:last-child{
-    border-bottom: none;
-}
-.hizmetler-container {
+
+.header-konteyner {
     display: flex;
     justify-content: space-between;
-    gap: 20px; /*boşluğun uzunluğu */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
-.hizmet-kart {
-    background-color: white;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    flex: 1;/*tüm kartlar eşit genişlikte olsun komutu */
+
+.logo img {
+    height: 60px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    /* Eski kodundaki arka plan ve border'ları sildik */
+}
+
+nav a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #c5a059;
+}
+
+/* 3. HERO (KAPAK) */
+.hero {
+    height: 85vh;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('proje-kapak.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-}
-.teklif-formu {
-    background-color: white;
-    padding: 30px;
-    margin: 40px auto; /* Üstten/alttan 40px, sağdan/soldan otomatik (ortalar) */
-    max-width: 500px;  /* Formun çok yayılmasını engeller */
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    color: white;
+    margin-top: 0; /* Header fixed olduğu için sıfırladık */
 }
 
-.form-grubu {
-    margin-bottom: 20px; /* Her giriş alanı arasında boşluk bırak */
+.hero h1 { 
+    font-size: 3.5rem; 
+    margin-bottom: 1rem;
+    color: white;
+    border: none;
 }
 
-label {
-    display: block; /* Yazıyı kutunun üstüne alır */
-    margin-bottom: 8px;
+.buton-gold {
+    background: #c5a059;
+    color: white;
+    padding: 15px 35px;
+    text-decoration: none;
+    border-radius: 5px;
     font-weight: bold;
+    display: inline-block;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.buton-gold:hover {
+    transform: translateY(-3px);
+    background: #b08d4a;
+}
+
+/* 4. HİZMETLER VE PROJELER */
+.hizmetler-bolumu, #projeler {
+    padding: 80px 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2rem;
     color: #2c3e50;
 }
 
+.hizmetler-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.hizmet-kart {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    flex: 1;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* 5. PROJE GRID (HELIS TARZI) */
+.proje-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.proje-kart {
+    position: relative;
+    overflow: hidden;
+    height: 350px;
+    border-radius: 8px;
+}
+
+.proje-kart img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.proje-kart:hover img {
+    transform: scale(1.1);
+}
+
+.proje-bilgi {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 25px;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+}
+
+.proje-kart:hover .proje-bilgi {
+    transform: translateY(0);
+}
+
+/* 6. FORM TASARIMI */
+.teklif-formu {
+    background-color: white;
+    padding: 50px;
+    margin: 50px auto;
+    max-width: 600px;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.form-grubu { margin-bottom: 20px; }
+
 input, textarea {
-    width: 100%; /* Kutuyu formun genişliğine yayar */
+    width: 100%;
     padding: 12px;
     border: 1px solid #ddd;
     border-radius: 6px;
-    font-family: inherit;
-    box-sizing: border-box; /* Padding'in kutuyu dışarı taşırmasını önler */
+    margin-top: 5px;
 }
 
 .gonder-btn {
-    background-color: orange;
+    background-color: #2c3e50;
     color: white;
     padding: 15px;
     border: none;
@@ -86,100 +192,40 @@ input, textarea {
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    transition: background 0.3s ease , transform 0.2s;
+    transition: background 0.3s;
 }
 
-.gonder-btn:hover {
-    background-color: darkorange;
-    transform: scale(1.02);
-}
-/* Kartların yan yana dizilmesi */
-.proje-grid {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    padding: 20px;
-}
+.gonder-btn:hover { background-color: #c5a059; }
 
-.proje-kart {
-    background-color: white;
-    width: 300px;
-    border-radius: 12px;
-    overflow: hidden;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    transition: 0.3s;
-}
-/* Proje kartının üzerine gelince (Hover) yapılacaklar */
-.proje-kart:hover {
-    transform: translateY(-10px); /* Kartı 10 piksel yukarı kaldırır */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Gölgeyi belirginleştirir */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hareketin yumuşak olması için */
-}
-
-/* Eğer resmin de hafifçe büyümesini istersen bunu da ekleyebilirsin */
-.proje-kart:hover img {
-    transform: scale(1.05); /* Resmi %5 büyütür */
-    transition: transform 0.3s ease;
-}
-
-.proje-kart img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover; /* Resmi kutuya düzgün sığdırır */
-}
-
-.proje-bilgi {
-    padding: 15px;
-    text-align: center;
-    font-weight: bold;
-}
-
-/* --- MODAL (AÇILIR PENCERE) TASARIMI --- */
+/* 7. MODAL VE MOBİL */
 .modal-arkaplan {
-    display: none; /* BAŞLANGIÇTA GİZLİ */
+    display: none;
     position: fixed;
-    z-index: 999;
+    z-index: 2000;
     left: 0; top: 0;
     width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.8); /* Arkayı karartır */
+    background-color: rgba(0,0,0,0.9);
 }
 
 .modal-kutu {
     background-color: white;
-    margin: 10% auto;
+    margin: 5% auto;
     padding: 40px;
     width: 50%;
     border-radius: 15px;
     position: relative;
-    text-align: center;
 }
 
-.kapatma-isareti {
-    position: absolute;
-    right: 20px; top: 10px;
-    font-size: 30px;
-    cursor: pointer;
-}
-/* Ekran genişliği 768px veya daha az ise (Telefon ve Tabletler) */
 @media (max-width: 768px) {
-    
-    .hizmetler-container, .proje-grid {
-        flex-direction: column; /* Yan yana dizilimi iptal et, alt alta diz */
-        align-items: center;    /* Ortala */
-    }
+    .hizmetler-container { flex-direction: column; }
+    header { padding: 10px 20px; }
+    .hero h1 { font-size: 2rem; }
+}
 
-    .hizmet-kart, .proje-kart {
-        width: 90%;             /* Kartlar ekranın çoğunu kaplasın */
-        margin-bottom: 20px;    /* Aralarına dikey boşluk ekle */
-    }
-
-    .modal-kutu {
-        width: 90%;             /* Detay penceresi mobilde dar kalmasın */
-        margin: 30% auto;
-    }
-    
-    h1 {
-        font-size: 24px;        /* Başlığı mobilde biraz küçült */
-    }
+footer {
+    text-align: center;
+    padding: 40px;
+    background: #2c3e50;
+    color: white;
+    margin-top: 50px;
 }
