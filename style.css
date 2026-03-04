@@ -33,6 +33,12 @@ header {
 
 .logo img {
     height: 60px;
+    width: auto;  /* Genişliği oranlı şekilde kendi ayarlar */
+    display: block;
+    transition: transform 0.3s ease;
+}
+.logo img:hover {
+    transform: scale(1.05); /* Üzerine gelince hafifçe büyüsün */
 }
 
 nav ul {
