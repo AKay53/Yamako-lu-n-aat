@@ -62,18 +62,20 @@ nav a:hover {
 }
 
 /* 3. HERO (KAPAK) */
-.hero {
-    height: 85vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('proje-kapak.jpg');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    margin-top: 0; /* Header fixed olduğu için sıfırladık */
-}
+ .hero {
+        height: 85vh; /* Ekranın %85'ini kaplar */
+        /* Aşağıdaki satıra görselinin adını doğru yaz */
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('resimler/pendik.png'); 
+        background-size: cover; /* Resmi alana tam yayar */
+        background-position: center; /* Resmi ortalar */
+        background-attachment: fixed; /* Kaydırırken arkada sabit kalır (Helis tarzı!) */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+    }
+
 
 .hero h1 { 
     font-size: 3.5rem; 
