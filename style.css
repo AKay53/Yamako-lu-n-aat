@@ -283,3 +283,48 @@ footer {
     transform: scale(1.1);
     background-color: #128c7e;
 }
+@media (max-width: 768px) {
+    /* Menü mobilde alt alta gelsin veya hizalansın */
+    .header-konteyner {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    nav ul {
+        padding: 0;
+        margin-top: 10px;
+    }
+
+    /* Proje kartlarını tek sütun yap */
+    .proje-grid {
+        grid-template-columns: 1fr !important; 
+        padding: 10px;
+    }
+
+    /* Hero (Giriş) yazısını küçült */
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    /* Formu daralt */
+    form {
+        width: 95%;
+        margin: 10px auto;
+    }
+}
+/* Her şeyin kutu içinde kalmasını sağlar */
+* {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+body {
+    overflow-x: hidden; /* Yatay kaydırmayı tamamen yasaklar */
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto; /* Resimler ekrandan taşmaz, oranını korur */
+}
