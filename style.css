@@ -227,7 +227,23 @@ input, textarea {
 @media (max-width: 768px) {
     .hizmetler-container { flex-direction: column; }
     header { padding: 10px 20px; }
-    .hero h1 { font-size: 2rem; }
+    .hero {
+        /* Mobilde 'fixed' özelliği sorun çıkarır, 'scroll' yapıyoruz */
+        background-attachment: scroll !important; 
+        background-size: cover;
+        background-position: center center;
+        height: 60vh; /* Mobilde ekranın %60'ını kaplasın, daha derli toplu durur */
+    }
+
+    .hero h1 {
+        font-size: 1.8rem; /* Yazıyı mobilde okunacak boyuta getiriyoruz */
+        padding: 0 10px;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
 }
 
 footer {
