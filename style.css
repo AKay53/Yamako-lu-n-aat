@@ -344,3 +344,122 @@ img {
     max-width: 100%;
     height: auto; /* Resimler ekrandan taşmaz, oranını korur */
 }
+/* Hamburger Butonu Stili */
+.menu-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    cursor: pointer;
+    background: #c5a059; /* Gold renk */
+    padding: 10px;
+    border-radius: 5px;
+}
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+}
+
+/* Sidebar (Yan Menü) */
+.sidebar {
+    height: 100%;
+    width: 0; /* Kapalıyken 0 */
+    position: fixed;
+    z-index: 1002;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidebar a, .dropdown-btn {
+    padding: 15px 30px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+    transition: 0.3s;
+}
+
+.sidebar a:hover, .dropdown-btn:hover {
+    color: #f1f1f1;
+    background-color: #222;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Alt Menü (Dropdown) */
+.dropdown-container {
+    display: none; /* Başlangıçta gizli */
+    background-color: #262626;
+    padding-left: 8px;
+}
+
+/* Aktiflik sınıfı */
+.active {
+    background-color: #c5a059;
+    color: white;
+}
+/* Kaydırma alanının dış çerçevesi */
+.slider-cerceve {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.slider-konteyner {
+    display: flex; /* Resimleri yan yana dizer */
+    overflow-x: auto; /* Yatay kaydırmayı açar */
+    scroll-snap-type: x mandatory; /* Kaydırınca resmin tam ortada durmasını sağlar */
+    gap: 15px;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch; /* Mobilde yağ gibi akması için */
+}
+
+/* Scroll barı (kaydırma çubuğunu) şıklaştıralım */
+.slider-konteyner::-webkit-scrollbar {
+    height: 6px;
+}
+.slider-konteyner::-webkit-scrollbar-thumb {
+    background: #c5a059;
+    border-radius: 10px;
+}
+
+.slider-konteyner img {
+    flex: 0 0 85%; /* Her resim ekranın %85'ini kaplasın (sonraki resim hafif görünsün diye) */
+    height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    scroll-snap-align: center; /* Resim kayınca merkeze mıknatıslanır */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.kaydir-ipucu {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 8px;
+}
+
+/* Masaüstü bilgisayarlar için resmi biraz küçültelim ki devasa durmasın */
+@media (min-width: 1024px) {
+    .slider-konteyner img {
+        flex: 0 0 60%; /* PC'de ekranın %60'ını kaplasın */
+        height: 500px;
+    }
+}

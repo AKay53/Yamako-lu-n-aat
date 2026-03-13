@@ -7,19 +7,33 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+    <div class="menu-btn" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">&times;</a>
+        
+        <a href="index.html">Ana Sayfa</a>
+        <a href="hakkimizda.html">Hakkımızda</a>
+        <a href="hizmetlerimiz.html">Hizmetlerimiz</a>
+    
+        <button class="dropdown-btn">Projelerimiz <span>▼</span></button>
+        <div class="dropdown-container">
+            <a href="referans.html">Referans Projeler</a>
+            <a href="toplu.html">Toplu Konutlar</a>
+            <a href="app.html">Apartman Projeleri</a>
+        </div>
+    
+        <a href="#iletisim">Teklif Al</a>
+    </div>
     <header>
         <div class="header-konteyner">
             <div class="logo">
                 <img src="resimler/logo.png" alt="Yamakoğlu İnşaat Logo">
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Ana Sayfa</a></li>
-                    <li><a href="#projeler">Projelerimiz</a></li>
-                    <li><a href="#teklif">Teklif Al</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
 
