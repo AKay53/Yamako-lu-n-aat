@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helis More | Yamakoğlu İnşaat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="menu-btn" onclick="toggleMenu()"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+    
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">&times;</a>
+        <a href="index.html">Ana Sayfa</a>
+        <a href="hakkimizda.html">Hakkımızda</a>
+        <a href="hizmetlerimiz.html">Hizmetlerimiz</a>
+        <button class="dropdown-btn">Referans Projeleri <span>▼</span></button>
+        <div class="dropdown-container">
+            <button class="sub-dropdown-btn">Konut Projeleri <span>▼</span></button>
+            <div class="sub-dropdown-container" style="display:block;">
+                <a href="dossodossi.html" class="proje-cubuk" style="border-left:3px solid #fff; background:#c5a059 !important; color:#000 !important;">DossoDossi Residence</a>
+                <a href="ulussavoy.html" class="proje-cubuk">Ulus Savoy Villaları</a>
+                <a href="helismore.html" class="proje-cubuk">Helis More</a>
+                <a href="helismetro.html" class="proje-cubuk">Helis Metro</a>               
+                <a href="cengel.html" class="proje-cubuk">Çengelköy Park</a>
+                <a href="akasya.html" class="proje-cubuk">Akasya Koru</a>
+                <a href="akay.html" class="proje-cubuk">Akay Rezidance</a>
+                <a href="helisgolevleri.html" class="proje-cubuk">Helis Göl Evleri</a>
+                <a href="helishouse.html" class="proje-cubuk">Helis House</a>
+            </div>
+            <button class="sub-dropdown-btn">İş Yeri Projeleri <span>▶</span></button>
+            <div class="sub-dropdown-container">
+                <a href="helismetroofis.html" class="proje-cubuk">Helis Metro Ofis</a>
+                <a href="helisgoldofis.html" class="proje-cubuk">Helis Gold Ofis</a>
+                <a href="asora.html" class="proje-cubuk">Asora Ticaret Merkezi</a>
+            </div>
+            <button class="sub-dropdown-btn">Otel Projeleri <span>▶</span></button>
+            <div class="sub-dropdown-container">
+                <a href="dossodossiotel.html" class="proje-cubuk">Dosso Dossi Otel</a>
+                <a href="helisbitez.html" class="proje-cubuk">Helis Bitez Villa & Otel</a>
+            </div>
+        </div>
+        <a href="index.html#iletisim">Teklif Al / İletişim</a>
+    </div>
+
+    <header><div class="header-konteyner"><div class="logo"><img src="resimler/logo.png" alt="Logo"></div></div></header>
+
+    <main class="referans-konteyner" style="padding: 20px; max-width: 1200px; margin: 0 auto;">
+        <h1 class="sayfa-basligi" style="text-align:center; color:#c5a059; margin-bottom:20px;">DossoDossi Residence</h1>
+        
+        <div class="sahibinden-galeri">
+            <div class="resim-sayac" id="get-sayac">1 / --</div>
+            <div class="galeri-ok ok-sol" id="galeriOkSol">&lt;</div>
+            <div class="ana-resim-kutusu">
+                <img id="galeriAnaResim" src="" alt="DossoDossi">
+            </div>
+            <div class="galeri-ok ok-sag" id="galeriOkSag">&gt;</div>
+
+            <div class="gizli-resimler" style="display: none;">
+                <img src="resimler/helismore1.jpg">
+                <img src="resimler/helismore2.jpg">
+                <img src="resimler/helismore3.jpg">
+                <img src="resimler/helismore4.jpg">
+                <img src="resimler/helismore5.jpg">
+                <img src="resimler/helismore6.jpg">
+                <img src="resimler/helismore7.jpg">
+                <img src="resimler/helismore8.jpg">
+                <img src="resimler/helismore9.jpg">
+
+            </div>
+        </div>
+
+        <section class="proje-detay-metni" style="color:#000000; margin-top:30px;">
+            <h2>Helise More Proje Detayları</h2>
+            <p>Cemal Kurtoğlu karar verecek.</p>
+        </section>
+    </main>
+
+    <div id="lightboxKapsayici" class="lightbox">
+        <span class="lightbox-kapat">&times;</span>
+        <img id="lightboxResim" class="lightbox-icerik" src="">
+    </div>
+
+    <footer><p>&copy; 2026 YAMAKOĞLU İNŞAAT - Tüm Hakları Saklıdır.</p></footer>
+    <script src="script.js"></script>
+</body>
+</html>

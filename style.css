@@ -463,3 +463,127 @@ img {
         height: 500px;
     }
 }
+/* Sahibinden Tarzı Galeri Sistemi */
+.sahibinden-galeri {
+    position: relative;
+    max-width: 800px;
+    margin: 20px auto;
+    background: #111;
+    border: 2px solid #c5a059;
+    border-radius: 8px;
+    overflow: hidden;
+    user-select: none;
+}
+
+.ana-resim-kutusu {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-in;
+}
+
+.ana-resim-kutusu img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Galeri Ok İşaretleri */
+.galeri-ok {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0);
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, opacity 0.2s;
+    opacity: 0.7;
+    z-index: 10;
+}
+
+.galeri-ok:hover {
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 1;
+}
+
+.ok-sol { left: 0; }
+.ok-sag { right: 0; }
+
+/* Resim Sayacı (Örn: 1 / 5) */
+.resim-sayac {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #c5a059;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 14px;
+    z-index: 11;
+}
+
+/* Tam Ekran (Lightbox) Modu */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-icerik {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    cursor: zoom-out;
+}
+
+.lightbox-kapat {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+/* Üç Katlı Menü Stilleri */
+.sub-dropdown-btn {
+    padding: 10px 40px !important;
+    font-size: 16px !important;
+    background: none;
+    border: none;
+    color: #bbb;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    display: block;
+}
+.proje-cubuk {
+    padding: 8px 15px !important;
+    margin: 5px 40px !important;
+    font-size: 14px !important;
+    background-color: #222 !important;
+    color: #fff !important;
+    border-radius: 4px;
+    border-left: 3px solid #c5a059;
+    display: block;
+    text-decoration: none;
+}
+.proje-cubuk:hover { background-color: #c5a059 !important; color: #000 !important; }
+.sub-dropdown-container { display: none; background-color: #111; }

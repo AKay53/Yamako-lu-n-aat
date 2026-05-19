@@ -1,86 +1,94 @@
-// 1. Proje Verileri
-const projeler = [
-    {
-        baslik: "Yamakoğlu Sahil Villaları",
-        aciklama: "Denize sıfır, akıllı ev sistemli lüks konutlar.",
-        resim: "resimler/IMG_7877.JPG",
-        link: "referans.html" 
-    },
-    {
-        baslik: "Yamakoğlu Apartman",
-        aciklama: "Şehrin kalbinde, modern ve güvenli yaşam alanı.",
-        resim: "resimler/IMG_7876.JPG",
-        link: "app.html"
-    },
-    {
-        baslik: "Modern Villa",
-        aciklama: "Avrupa standartlarında estetik dokunuşlar.",
-        resim: "resimler/IMG_7875.JPG",
-        link: "referans.html"
-    }
-];
-
-// 2. Projeleri Ana Sayfaya Yükleme
-function projeleriYukle() {
-    const grid = document.querySelector('.proje-grid');
-    if (!grid) return; // Eğer o sayfada .proje-grid yoksa hata vermez
-
-    grid.innerHTML = ""; // İçini temizleyip baştan doldurur
-    projeler.forEach(proje => {
-        grid.innerHTML += `
-            <a href="${proje.link}" class="proje-kart-link">
-                <div class="proje-kart">
-                    <img src="${proje.resim}" alt="${proje.baslik}">
-                    <div class="proje-bilgi">
-                        <h3>${proje.baslik}</h3>
-                        <p>Detayları Gör →</p>
-                    </div>
-                </div>
-            </a>
-        `;
-    });
-}
-
-// 3. Sidebar Menü Fonksiyonu
+// 1. Sidebar Menü Açma/Kapatma
 function toggleMenu() {
     const sidebar = document.getElementById("sidebar");
     if (!sidebar) return;
-    
-    if (sidebar.style.width === "250px") {
-        sidebar.style.width = "0";
-    } else {
-        sidebar.style.width = "250px";
-    }
+    sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
 }
 
-// 4. Dropdown (Alt Menü) Mekanizması
-// DOMContentLoaded kullanarak sayfa hazır olduğunda butonları dinlemeye başlarız
+// 2. Sayfa Yüklendiğinde Çalışacak Motorlar
 document.addEventListener("DOMContentLoaded", function() {
-    projeleriYukle(); // Projeleri yükle
-
-    const dropdownBtns = document.querySelectorAll(".dropdown-btn");
-    dropdownBtns.forEach(btn => {
-        btn.addEventListener("click", function() {
-            this.classList.toggle("active");
-            const dropdownContent = this.nextElementSibling;
-            if (dropdownContent) {
-                if (dropdownContent.style.display === "block") {
-                    dropdownContent.style.display = "none";
+    
+    // Üç Katlı Dropdown Mekanizması
+    const dropdowns = document.querySelectorAll(".dropdown-btn, .sub-dropdown-btn");
+    dropdowns.forEach(btn => {
+        btn.addEventListener("click", function(e) {
+            const container = this.nextElementSibling;
+            if (container) {
+                if (container.style.display === "block") {
+                    container.style.display = "none";
+                    if(this.querySelector("span")) this.querySelector("span").innerText = this.classList.contains("dropdown-btn") ? "▼" : "▶";
                 } else {
-                    dropdownContent.style.display = "block";
+                    container.style.display = "block";
+                    if(this.querySelector("span")) this.querySelector("span").innerText = "▼";
                 }
             }
+            e.stopPropagation();
         });
     });
-});
 
-// 5. Modal / Dış Tıklama Kapatma
-window.addEventListener("click", function(event) {
-    const modal = document.getElementById('pencereKapsayici');
-    const sidebar = document.getElementById("sidebar");
-    
-    // Modal dışına tıklandığında kapat
-    if (event.target == modal) {
-        modal.style.display = "none";
+    // --- SAHİBİNDEN TARZI GALERİ MOTORU ---
+    const galeriKapsayici = document.querySelector('.sahibinden-galeri');
+    if (galeriKapsayici) {
+        const gizliResimler = galeriKapsayici.querySelectorAll('.gizli-resimler img');
+        const anaResim = document.getElementById('galeriAnaResim');
+        const sayac = document.getElementById('galeriSayac');
+        const okSol = document.getElementById('galeriOkSol');
+        const okSag = document.getElementById('galeriOkSag');
+        const lightbox = document.getElementById('lightboxKapsayici');
+        const lightboxResim = document.getElementById('lightboxResim');
+
+        let aktifIndeks = 0;
+        const toplamResim = gizliResimler.length;
+
+        // Resimleri diziye alalım
+        const resimKaynaklari = [];
+        gizliResimler.forEach(img => resimKaynaklari.push(img.getAttribute('src')));
+
+        // Resim ve Sayacı Güncelleyen Fonksiyon
+        function resmiGoster(indeks) {
+            if (indeks >= toplamResim) indeks = 0;
+            if (indeks < 0) indeks = toplamResim - 1;
+            aktifIndeks = indeks;
+            
+            anaResim.setAttribute('src', resimKaynaklari[aktifIndeks]);
+            if(sayac) sayac.innerText = `${aktifIndeks + 1} / ${toplamResim}`;
+        }
+
+        // İlk resmi yükle
+        if(toplamResim > 0) resmiGoster(0);
+
+        // Ok Tıklama Olayları
+        if(okSag) okSag.addEventListener('click', (e) => { e.stopPropagation(); resmiGoster(aktifIndeks + 1); });
+        if(okSol) okSol.addEventListener('click', (e) => { e.stopPropagation(); resmiGoster(aktifIndeks - 1); });
+
+        // Sahibinden Mantığı: Ana resmin sağ yarısına tıklayınca sonraki resme geçsin
+        if(anaResim) {
+            anaResim.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left; // Tıklanan X koordinatı
+                
+                if (x > rect.width / 2) {
+                    // Sağ tarafa tıklandı: Sonraki Resim
+                    resmiGoster(aktifIndeks + 1);
+                } else {
+                    // Sol tarafa tıklandı: Tam Ekran Yap (Lightbox)
+                    if(lightbox && lightboxResim) {
+                        lightboxResim.setAttribute('src', resimKaynaklari[aktifIndeks]);
+                        lightbox.style.display = 'flex';
+                    }
+                }
+            });
+        }
+
+        // Lightbox Kapatma
+        if(lightbox) {
+            lightbox.addEventListener('click', () => { lightbox.style.display = 'none'; });
+        }
     }
 });
+
+// Eski Modal Kapatma Fonksiyonları (Hata vermemesi için korundu)
+function detayKapat() {
+    const modal = document.getElementById('pencereKapsayici');
+    if (modal) modal.style.display = "none";
+}
